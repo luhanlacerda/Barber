@@ -4,21 +4,25 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 import { AppComponent } from './app.component';
-import { FuncionarioComponent } from './funcionario/funcionario.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { AppRoutingModule } from './/app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
+import { FuncionarioModule } from './funcionario/funcionario.module';
+import { HomeComponent } from './home/home.component';
+import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FuncionarioComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomeComponent,
+    PaginaNaoEncontradaComponent
   ],
   imports: [
     BrowserModule,
     NgbModule.forRoot(),
-    AppRoutingModule,
+    FuncionarioModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
