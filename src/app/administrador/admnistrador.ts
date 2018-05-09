@@ -1,5 +1,5 @@
 import { Pessoa } from "../pessoa/pessoa";
 
-export class Funcionario extends Pessoa {
+export class Admnistrador extends Pessoa {
     readonly id: number;
 }
