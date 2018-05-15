@@ -9,6 +9,10 @@ import { HomeComponent } from './home/home.component';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+
+import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 
 @NgModule({
   declarations: [
@@ -17,12 +21,15 @@ import { FooterComponent } from './footer/footer.component';
     HomeComponent,
     PaginaNaoEncontradaComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     FuncionarioModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ShowHidePasswordModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
