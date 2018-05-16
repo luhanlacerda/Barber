@@ -7,6 +7,7 @@ export abstract class Pessoa {
     private _endereco: string;
     private _dataNascimento: Date;
     private _estado: Estado;
+    private _sexo: string
 
     public get nome(): string {
         return this._nome;
@@ -54,5 +55,13 @@ export abstract class Pessoa {
     
     public set estado(estado: Estado) {
         this._estado = estado;
+    }
+
+    public get sexo(): string {
+        return this._sexo;
+    }
+    
+    public set sexo(sexo: string) {
+        this._sexo = sexo;
     }
 }
