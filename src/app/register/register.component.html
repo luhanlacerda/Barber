@@ -7,7 +7,6 @@
             <div class="card-body">
               <h4 class="card-title text-center">Registrar</h4>
               <form method="POST">
-
                 <div class="form-group">
                   <label for="name">Nome</label>
                   <input id="name" type="text" class="form-control" name="name" required autofocus>
@@ -20,12 +19,16 @@
 
                 <div class="form-group">
                   <label for="password">Senha</label>
-                  <input id="password" type="password" class="form-control" name="password" required data-eye>
+                  <show-hide-password icon="fontawesome">
+                    <input id="password" type="password" class="form-control" name="password" required>
+                  </show-hide-password>
                 </div>
 
                 <div class="form-group">
                   <label for="password-check">Confirmar Senha</label>
-                  <input id="password-check" type="password" class="form-control" name="password-check" required data-eye>
+                  <show-hide-password icon="fontawesome">
+                    <input id="password-check" type="password" class="form-control" name="password-check" required data-eye>
+                  </show-hide-password>
                 </div>
 
                 <div class="form-group no-margin">

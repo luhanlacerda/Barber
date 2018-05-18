@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { ShowHidePasswordModule } from 'ngx-show-hide-password';
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -11,8 +13,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-
-import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 
 @NgModule({
   declarations: [

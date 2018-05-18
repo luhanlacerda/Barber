@@ -11,6 +11,7 @@ export abstract class Pessoa {
     private _endereco: Endereco;
     private _dataNascimento: Date;
     private _estado: Estado;
+    private _sexo: string
 
     public get email(): string {
         return this._email;
@@ -74,5 +75,13 @@ export abstract class Pessoa {
     
     public set estado(estado: Estado) {
         this._estado = estado;
+    }
+
+    public get sexo(): string {
+        return this._sexo;
+    }
+    
+    public set sexo(sexo: string) {
+        this._sexo = sexo;
     }
 }

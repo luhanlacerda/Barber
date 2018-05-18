@@ -6,9 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cadastrar-funcionario.component.css']
 })
 export class CadastrarFuncionarioComponent implements OnInit {
-
+  
   constructor() { }
-
+  
   ngOnInit() {
   }
 
