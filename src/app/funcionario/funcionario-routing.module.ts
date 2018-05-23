@@ -12,7 +12,7 @@ const routes: Routes = [
     ]
   }*/
   { path: 'funcionario/cadastrar', component: CadastrarFuncionarioComponent },
-  { path: 'funcionario/atualizar/:id', component: AtualizarFuncionarioComponent }
+  { path: 'funcionario/atualizar', component: AtualizarFuncionarioComponent }
 ];
 
 @NgModule({

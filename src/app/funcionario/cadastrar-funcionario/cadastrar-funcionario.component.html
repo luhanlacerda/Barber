@@ -9,31 +9,32 @@
               <form method="POST">
 
                 <div class="form-group">
-                  <label for="nome">Nome</label>
+                  <label for="nome">Nome:</label>
                   <input id="nome" type="text" class="form-control" name="nome" required autofocus>
                 </div>
 
                 <div class="form-group">
-                  <label for="rg">RG</label>
+                  <label for="rg">RG:</label>
                   <input id="rg" type="text" class="form-control" name="rg" required autofocus>
                 </div>
 
                 <div class="form-group">
-                  <label for="cpf">CPF</label>
+                  <label for="cpf">CPF:</label>
                   <input id="cpf" type="text" class="form-control" name="cpf" required autofocus>
                 </div>
 
                 <div class="form-group">
-                  <label for="inputGender" class="control-label">Sexo</label>
+                  <label for="inputGender" class="control-label">Sexo:</label>
                   <select>
-                    <option value="None">None</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
+                    <option value="None">Selecione</option>
+                    <option value="Male">Masculino</option>
+                    <option value="Male">Feminino</option>
+                    <option value="Female">Outros</option>
                   </select>
                 </div>
 
                 <div class="form-group">
-                  <label for="inputBirth">Data de nascimento</label>
+                  <label for="inputBirth">Data de nascimento:</label>
                   <select id="dateofbirth-day" name="dateOfBirth[day]" class="ns-w4 day update-full-date" title="Dia" data-group="dateofbirth">
                     <option value="">Dia</option>
                     <option value="01">01</option>
@@ -202,7 +203,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="inputEstado">Estado</label>
+                  <label class="inputEstado">Estado:</label>
                   <select id="address-state" aria-readonly="true" data-rules="required" class="required state" name="address[state]" title="Estado">
                     <option value="" selected>Selecione</option>
                     <option value="AC">Acre</option>
@@ -236,19 +237,19 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="endereco">Endereço</label>
+                  <label for="endereco">Endereço:</label>
                   <input id="endereco" type="text" class="form-control" name="endereco" required autofocus>
                 </div>
 
                 <div class="form-group">
-                  <label for="password">Senha</label>
+                  <label for="password">Senha:</label>
                   <show-hide-password icon="fontawesome">
                     <input id="password" type="password" class="form-control" name="password" required>
                   </show-hide-password>
                 </div>
 
                 <div class="form-group">
-                  <label for="password-check">Confirmar Senha</label>
+                  <label for="password-check">Confirmar Senha:</label>
                   <show-hide-password icon="fontawesome">
                     <input id="password-check" type="password" class="form-control" name="password-check" required>
                   </show-hide-password>
