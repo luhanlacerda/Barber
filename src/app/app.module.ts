@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 
@@ -13,6 +14,10 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { ApiService } from './api/api.service';
+import { AuthInterceptor } from './api/auth-interceptor';
+import { FormSharedModule } from './shared/form-shared/form-shared.module';
+import { AuthGuard } from './api/auth-guard';
 
 @NgModule({
   declarations: [
@@ -27,11 +32,21 @@ import { RegisterComponent } from './register/register.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FuncionarioModule,
     AppRoutingModule,
+    FormSharedModule,
     ShowHidePasswordModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+    AuthGuard,
+    ApiService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

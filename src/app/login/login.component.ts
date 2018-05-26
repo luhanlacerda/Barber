@@ -1,6 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Login } from './../api/login';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 
-import * as $ from 'jquery';
+import * as shajs from 'sha.js';
+
+import { ApiService } from '../api/api.service';
+import { User } from '../user/user';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,46 +15,81 @@ import * as $ from 'jquery';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  formulario: FormGroup;
+  apiError: string[] = [];
+
+  constructor(private apiService: ApiService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
-    $(function() {
-      $("input[type='password'][data-eye]").each(function(i) {
-        let $this = $(this);
-    
-        $this.wrap($("<div/>", {
-          style: 'position:relative'
-        }));
-        $this.css({
-          paddingRight: 60
-        });
-        $this.after($("<div/>", {
-          html: 'Show',
-          class: 'btn btn-primary btn-sm',
-          id: 'passeye-toggle-'+i,
-          style: 'position:absolute;right:10px;top:50%;transform:translate(0,-50%);padding: 2px 7px;font-size:12px;cursor:pointer;'
-        }));
-        $this.after($("<input/>", {
-          type: 'hidden',
-          id: 'passeye-' + i
-        }));
-        $this.on("keyup paste", function() {
-          $("#passeye-"+i).val($(this).val());
-        });
-        $("#passeye-toggle-"+i).on("click", function() {
-          if($this.hasClass("show")) {
-            $this.attr('type', 'password');
-            $this.removeClass("show");
-            $(this).removeClass("btn-outline-primary");
-          }else{
-            $this.attr('type', 'text');
-            $this.val($("#passeye-"+i).val());				
-            $this.addClass("show");
-            $(this).addClass("btn-outline-primary");
-          }
-        });
-      });
-    });
+    this.formulario = this.formBuilder.group({
+      email: [null, [Validators.required, Validators.email]],
+      senha: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]]
+    })
+  }
+
+  onSubmit() {
+    if (this.formulario.valid) {
+      const user: User = new User();
+      user.email = this.formulario.get('email').value;
+      user.senha = shajs('sha256').update(this.formulario.get('senha').value).digest('hex');
+
+      this.apiService.login(user).subscribe(
+        res => {
+          let login: Login = { token: res["token"], email: res["email"], cargo: res["cargo"] };
+          localStorage.setItem("login", JSON.stringify(login));
+          this.router.navigate(['/']);
+        },
+        err => { this.apiError = [err["error"]["message"]]; }
+      );
+    } else {
+      this.apiError = [];
+    }
+  }
+
+  verificaCampoInvalido(campo: string) {
+    return this.formulario.get(campo).invalid && (this.formulario.get(campo).touched || this.formulario.get(campo).dirty);
+  }
+
+  mensagensEmailInvalido() {
+    if (this.verificaCampoInvalido('email')) {
+      const erros = this.formulario.get('email').errors;
+      var msgs = [];
+
+      if (erros.required) {
+        msgs.push("Email não informado.");
+      }
+
+      if (erros.email) {
+        msgs.push("Email inválido.");
+      }
+
+      return msgs;
+    }
+
+    return [];
+  }
+
+  mensagensSenhaInvalida() {
+    if (this.verificaCampoInvalido('senha')) {
+      const erros = this.formulario.get('senha').errors;
+      var msgs = [];
+
+      if (erros.required) {
+        msgs.push("Senha não informada.");
+      }
+
+      if (erros.required === undefined && erros.minlength !== undefined) {
+        msgs.push("Senha deve possuir no mínimo 3 caracteres.");
+      }
+
+      if (erros.required === undefined && erros.maxlength !== undefined) {
+        msgs.push("Senha deve possuir no máximo 20 caracteres.");
+      }
+
+      return msgs;
+    }
+
+    return [];
   }
 
 }

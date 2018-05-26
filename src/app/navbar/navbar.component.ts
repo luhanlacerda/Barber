@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
@@ -12,19 +12,19 @@ export class NavbarComponent implements OnInit {
   private url: string;
   private subscription: Subscription;
 
-  /*constructor(private route: ActivatedRoute) { 
-  }*/
-
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
-    // this.subscription = this.route.url.subscribe(
-    //   (params: any) => {
-    //     this.url = params['url'];
-    //   }
-    // )
-    //console.log(this.route.url);
+  }
+
+  logged() {
+    return localStorage.getItem("login") != null;
+  }
+
+  logout() {
+    localStorage.removeItem("login");
+    this.router.navigate(['/']);
   }
 
 }
