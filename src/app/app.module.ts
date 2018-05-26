@@ -18,6 +18,8 @@ import { ApiService } from './api/api.service';
 import { AuthInterceptor } from './api/auth-interceptor';
 import { FormSharedModule } from './shared/form-shared/form-shared.module';
 import { AuthGuard } from './api/auth-guard';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ServicoModule } from './servico/servico.module';
 
 @NgModule({
   declarations: [
@@ -28,15 +30,17 @@ import { AuthGuard } from './api/auth-guard';
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FuncionarioModule,
-    AppRoutingModule,
+    ServicoModule,
     FormSharedModule,
-    ShowHidePasswordModule.forRoot()
+    ShowHidePasswordModule.forRoot(),
+    AppRoutingModule
   ],
   providers: [
     {

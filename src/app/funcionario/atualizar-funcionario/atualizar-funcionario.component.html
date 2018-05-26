@@ -6,36 +6,36 @@
           <div class="card fat">
             <div class="card-body">
               <h4 class="card-title text-center">Atualizar Funcionário</h4>
-              <form method="POST">
-
+              <form [formGroup]="form_att_fuc" (ngSubmit)="onSubmit()" >
+                
                 <div class="form-group">
                   <label for="nome">Nome:</label>
-                  <input id="nome" type="text" class="form-control" name="nome" required autofocus>
+                  <input id="nome" type="text" class="form-control" formControlName="nome" autofocus>
                 </div>
-
+                
                 <div class="form-group">
                   <label for="rg">RG:</label>
-                  <input id="rg" type="text" class="form-control" name="rg" required autofocus>
+                  <input id="rg" type="text" class="form-control" formControlName="rg" autofocus>
                 </div>
-
+                
                 <div class="form-group">
                   <label for="cpf">CPF:</label>
-                  <input id="cpf" type="text" class="form-control" name="cpf" required autofocus>
+                  <input id="cpf" type="text" class="form-control" formControlName="cpf" autofocus>
                 </div>
-
+                
                 <div class="form-group">
                   <label for="inputGender" class="control-label">Sexo:</label>
-                  <select>
+                  <select formControlName="sexo">
                     <option value="None">Selecione</option>
                     <option value="Male">Masculino</option>
-                    <option value="Female">Feminino</option>
+                    <option value="Male">Feminino</option>
                     <option value="Female">Outros</option>
                   </select>
                 </div>
-
+                
                 <div class="form-group">
                   <label for="inputBirth">Data de nascimento:</label>
-                  <select id="dateofbirth-day" name="dateOfBirth[day]" class="ns-w4 day update-full-date" title="Dia" data-group="dateofbirth">
+                  <select id="dateofbirth-day" name="dateOfBirth[day]" class="ns-w4 day update-full-date" title="Dia" data-group="dateofbirth" formControlName="dataNascimento">
                     <option value="">Dia</option>
                     <option value="01">01</option>
                     <option value="02">02</option>
@@ -69,7 +69,7 @@
                     <option value="30">30</option>
                     <option value="31">31</option>
                   </select>
-                  <select id="dateofbirth-month" name="dateOfBirth[month]" class="ns-w4 month update-full-date" title="Mês" data-group="dateofbirth">
+                  <select id="dateofbirth-month" name="dateOfBirth[month]" class="ns-w4 month update-full-date" title="Mês" data-group="dateofbirth" formControlName="mes">
                     <option value="">Mês</option>
                     <option value="01">Jan</option>
                     <option value="02">Fev</option>
@@ -84,7 +84,7 @@
                     <option value="11">Nov</option>
                     <option value="12">Dez</option>
                   </select>
-                  <select id="dateofbirth-year" name="dateOfBirth[year]" class="ns-w4 year update-full-date" title="Ano" data-group="dateofbirth">
+                  <select id="dateofbirth-year" name="dateOfBirth[year]" class="ns-w4 year update-full-date" title="Ano" data-group="dateofbirth" formControlName="ano">
                     <option value="">Ano</option>
                     <option value="2015">2015</option>
                     <option value="2014">2014</option>
@@ -201,10 +201,10 @@
                     <option value="1903">1903</option>
                   </select>
                 </div>
-
+                
                 <div class="form-group">
                   <label class="inputEstado">Estado:</label>
-                  <select id="address-state" aria-readonly="true" data-rules="required" class="required state" name="address[state]" title="Estado">
+                  <select id="address-state" aria-readonly="true" data-rules="required" class="required state" name="address[state]" title="Estado" formControlName="estado">
                     <option value="" selected>Selecione</option>
                     <option value="AC">Acre</option>
                     <option value="AL">Alagoas</option>
@@ -235,26 +235,26 @@
                     <option value="TO">Tocantins</option>
                   </select>
                 </div>
-
+                
                 <div class="form-group">
                   <label for="endereco">Endereço:</label>
-                  <input id="endereco" type="text" class="form-control" name="endereco" required autofocus>
+                  <input id="endereco" type="text" class="form-control" name="endereco" formControlName="endereco" autofocus>
                 </div>
-
+                
                 <div class="form-group">
                   <label for="password">Senha:</label>
                   <show-hide-password icon="fontawesome">
-                    <input id="password" type="password" class="form-control" name="password" required>
+                    <input id="password" type="password" class="form-control" name="password" formControlName="senha" required>
                   </show-hide-password>
                 </div>
-
+                
                 <div class="form-group">
                   <label for="password-check">Confirmar Senha:</label>
                   <show-hide-password icon="fontawesome">
-                    <input id="password-check" type="password" class="form-control" name="password-check" required>
+                    <input id="password-check" type="password" class="form-control" name="password-check" formControlName="confirmar_senha" required>
                   </show-hide-password>
                 </div>
-
+                
                 <div class="form-group no-margin">
                   <button type="submit" class="btn btn-primary btn-block">
                     Registrar

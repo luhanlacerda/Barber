@@ -1,0 +1,42 @@
+<section id="my-login-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card-wrapper mx-auto">
+          <div class="card fat">
+            <div class="card-body">
+              <h4 class="card-title text-center">Cadastrar Serviço</h4>
+              <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                  <label for="descricao">Descrição:</label>
+                  <input id="descricao" type="text" class="form-control" formControlName="descricao" autofocus>
+                </div>
+                
+                <div class="form-group">
+                  <label for="valor">Valor:</label>
+                  <input id="valor" type="text" class="form-control" formControlName="valor" autofocus>
+                </div>
+                
+                <div class="form-group">
+                  <label for="situacao" class="control-label">Situação:</label>
+                  <select>
+                    <option value="None">Selecione</option>
+                    <option value="#">---</option>
+                    <option value="#">---</option>
+                  </select>
+                </div>
+                
+                <div class="form-group no-margin">
+                  <button type="submit" class="btn btn-primary btn-block">
+                    Cadastrar Serviço
+                  </button>
+                </div>
+                
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
