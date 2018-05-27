@@ -24,14 +24,14 @@
                     <a class="nav-link js-scroll-trigger" href="#contact">Contato</a>
                 </li>
                 <li class="dropdown-divider"></li>
-                <li *ngIf="!logged()" class="nav-item" routerLinkActive="active">
-                    <a class="nav-link js-scroll-trigger" routerLink="/login">Login</a>
+                <li *ngIf="!logged()" class="nav-item">
+                    <a class="nav-link js-scroll-trigger" routerLinkActive="active" routerLink="/login">Login</a>
                 </li>
-                <li *ngIf="!logged()" class="nav-item" routerLinkActive="active">
-                    <a class="nav-link js-scroll-trigger" routerLink="/registrar">Registrar</a>
+                <li *ngIf="!logged()" class="nav-item">
+                    <a class="nav-link js-scroll-trigger" routerLinkActive="active" routerLink="/registrar">Registrar</a>
                 </li>
-                <li *ngIf="logged()" class="nav-item" routerLinkActive="active">
-                    <a class="nav-link js-scroll-trigger" routerLink="/dashboard">Dashboard</a>
+                <li *ngIf="logged()" class="nav-item">
+                    <a class="nav-link js-scroll-trigger" routerLinkActive="active" routerLink="/dashboard">Dashboard</a>
                 </li>
                 <li *ngIf="logged()" class="nav-item">
                     <a class="nav-link js-scroll-trigger" (click)="logout()">Sair</a>
