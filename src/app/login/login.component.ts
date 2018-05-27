@@ -1,8 +1,6 @@
 import { Login } from './../api/login';
 import { Component, OnInit, EventEmitter } from '@angular/core';
 
-import * as shajs from 'sha.js';
-
 import { ApiService } from '../api/api.service';
 import { User } from '../user/user';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -29,13 +27,13 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.formulario.valid) {
-      const user: User = new User();
+      let user: User = new User();
       user.email = this.formulario.get('email').value;
-      user.senha = shajs('sha256').update(this.formulario.get('senha').value).digest('hex');
+      user.senha = this.formulario.get('senha').value;
 
       this.apiService.login(user).subscribe(
         res => {
-          let login: Login = { token: res["token"], email: res["email"], cargo: res["cargo"] };
+          let login: Login = { token: res["token"], email: user.email, cargo: res["cargo"] };
           localStorage.setItem("login", JSON.stringify(login));
           this.router.navigate(['/']);
         },
@@ -52,8 +50,8 @@ export class LoginComponent implements OnInit {
 
   mensagensEmailInvalido() {
     if (this.verificaCampoInvalido('email')) {
-      const erros = this.formulario.get('email').errors;
-      var msgs = [];
+      let erros = this.formulario.get('email').errors;
+      let msgs = [];
 
       if (erros.required) {
         msgs.push("Email não informado.");
@@ -71,8 +69,8 @@ export class LoginComponent implements OnInit {
 
   mensagensSenhaInvalida() {
     if (this.verificaCampoInvalido('senha')) {
-      const erros = this.formulario.get('senha').errors;
-      var msgs = [];
+      let erros = this.formulario.get('senha').errors;
+      let msgs = [];
 
       if (erros.required) {
         msgs.push("Senha não informada.");

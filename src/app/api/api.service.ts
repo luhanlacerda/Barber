@@ -17,4 +17,8 @@ export class ApiService {
     return this.http.post(this.basePath + "/usuario/login", { email: user.email, senha: user.senha });
   }
 
+  registrarCliente(user: User) {
+    return this.http.post(this.basePath + "/usuario/registrar/cliente", { email: user.email, senha: user.senha });
+  }
+
 }

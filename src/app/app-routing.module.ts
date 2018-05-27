@@ -12,7 +12,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
-  { path: 'registrar', component: RegisterComponent },
+  { path: 'registrar', component: RegisterComponent, canActivate: [AuthGuard] },
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: '**', component: PaginaNaoEncontradaComponent }
 ];

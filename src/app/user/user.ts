@@ -1,3 +1,5 @@
+import * as shajs from 'sha.js';
+
 import { Pessoa } from "../pessoa/pessoa";
 
 export class User extends Pessoa {
@@ -9,6 +11,6 @@ export class User extends Pessoa {
     }
     
     public set senha(senha: string) {
-        this._senha = senha;
+        this._senha = shajs('sha256').update(senha).digest('hex');
     }
 }

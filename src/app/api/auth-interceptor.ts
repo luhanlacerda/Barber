@@ -11,7 +11,7 @@ export class AuthInterceptor implements HttpInterceptor {
     
     console.log('interceptor start');
 
-    if (!req.url.endsWith("/usuario/login") && localStorage.getItem("login")) {
+    if ((!req.url.endsWith("/usuario/login") || !req.url.endsWith("/usuario/registrar/cliente")) && localStorage.getItem("login")) {
       let login: Login = JSON.parse(localStorage.getItem("login"));
 
       modifiedRequest.headers.append('Authorization', 'Bearer ' + login.token);
