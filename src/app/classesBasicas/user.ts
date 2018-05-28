@@ -1,6 +1,6 @@
 import * as shajs from 'sha.js';
 
-import { Pessoa } from "../pessoa/pessoa";
+import { Pessoa } from './pessoa';
 
 export class User extends Pessoa {
 

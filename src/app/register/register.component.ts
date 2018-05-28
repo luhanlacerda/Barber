@@ -1,12 +1,12 @@
-import { Login } from './../api/login';
-import { User } from './../user/user';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { PasswordValidator } from '../shared/password-validator';
 import { ApiService } from '../api/api.service';
-import { Cargo } from '../cargo/cargo';
+import { User } from '../classesBasicas/user';
+import { Cargo } from '../classesBasicas/cargo';
+import { Login } from '../classesBasicas/login';
 
 @Component({
   selector: 'app-register',
@@ -35,10 +35,8 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     if (this.formulario.valid) {
       let user: User = new User();
-      user.nome = this.formulario.get("nome").value;
       user.email = this.formulario.get("email").value;
       user.senha = this.formulario.get('senha').value;
-      user.cargo = Cargo.CLIENTE;
 
       this.apiService.registrarCliente(user).subscribe(
         res => {

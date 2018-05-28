@@ -1,10 +1,10 @@
-import { Login } from './../api/login';
 import { Component, OnInit, EventEmitter } from '@angular/core';
-
-import { ApiService } from '../api/api.service';
-import { User } from '../user/user';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import { ApiService } from '../api/api.service';
+import { User } from '../classesBasicas/user';
+import { Login } from '../classesBasicas/login';
 
 @Component({
   selector: 'app-login',

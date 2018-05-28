@@ -1,6 +1,6 @@
-import { Cargo } from "../cargo/cargo";
-import { Endereco } from "../endereco/endereco";
-import { Estado } from "../estado/estado";
+import { Estado } from './estado';
+import { Endereco } from './endereco';
+import { Cargo } from "./cargo";
 
 export abstract class Pessoa {
     private _email: string;

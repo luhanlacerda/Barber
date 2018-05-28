@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 
-import { User } from '../user/user';
+import { User } from '../classesBasicas/user';
 
 @Injectable()
 export class ApiService {
