@@ -6,33 +6,27 @@
           <div class="card fat">
             <div class="card-body">
               <h4 class="card-title text-center">Registrar Funcionário</h4>
-              <form [formGroup]="form_cad_fuc" (ngSubmit)="onSubmit()" >
+              <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
 
                 <div class="form-group">
                   <label for="nome">Nome:</label>
-                  <input id="nome" type="text" class="form-control" formControlName="nome" required>
-                  <app-campo-erro
-                    [msgErro]="nomeInvalido()"
-                    [mostrarErro]="verificaCampoInvalido('nome')">
+                  <input id="nome" type="text" class="form-control" formControlName="nome">
+                  <app-campo-erro [msgErro]="nomeInvalido()" [mostrarErro]="verificaCampoInvalido('nome')">
                   </app-campo-erro>
                 </div>
 
                 <div class="form-group">
                   <label for="rg">RG:</label>
-                  <input id="rg" type="text" class="form-control" formControlName="rg" required>
-                  <app-campo-erro
-                    [msgErro]="rgInvalido()"
-                    [mostrarErro]="verificaCampoInvalido('rg')">
+                  <input id="rg" type="text" class="form-control" formControlName="rg">
+                  <app-campo-erro [msgErro]="rgInvalido()" [mostrarErro]="verificaCampoInvalido('rg')">
                   </app-campo-erro>
                 </div>
 
                 <div class="form-group">
                   <label for="cpf">CPF:</label>
-                  <input id="cpf" type="text" class="form-control" formControlName="cpf" required>
-                  <app-campo-erro
-                  [msgErro]="cpfInvalido()"
-                  [mostrarErro]="verificaCampoInvalido('cpf')">
-                </app-campo-erro>
+                  <input id="cpf" type="text" class="form-control" formControlName="cpf">
+                  <app-campo-erro [msgErro]="cpfInvalido()" [mostrarErro]="verificaCampoInvalido('cpf')">
+                  </app-campo-erro>
                 </div>
 
                 <div class="form-group">
@@ -210,7 +204,7 @@
                     <option value="1905">1905</option>
                     <option value="1904">1904</option>
                     <option value="1903">1903</option>
-                  </select>
+                    </select>
                 </div>
 
                 <div class="form-group">
@@ -249,28 +243,24 @@
 
                 <div class="form-group">
                   <label for="endereco">Endereço:</label>
-                  <input id="endereco" type="text" class="form-control" formControlName="endereco" required>
-                  <app-campo-erro
-                  [msgErro]="enderecoInvalido()"
-                  [mostrarErro]="verificaCampoInvalido('endereco')">
-                </app-campo-erro>
+                  <input id="endereco" type="text" class="form-control" formControlName="endereco">
+                  <app-campo-erro [msgErro]="enderecoInvalido()" [mostrarErro]="verificaCampoInvalido('endereco')">
+                  </app-campo-erro>
                 </div>
 
                 <div class="form-group">
                   <label for="password">Senha:</label>
                   <show-hide-password icon="fontawesome">
-                    <input id="password" type="password" class="form-control" formControlName="senha" required>
+                    <input id="password" type="password" class="form-control" formControlName="senha">
                   </show-hide-password>
-                  <app-campo-erro
-                    [msgErro]="mensagensSenhaInvalida()"
-                    [mostrarErro]="verificaCampoInvalido('senha')">
+                  <app-campo-erro [msgErro]="mensagensSenhaInvalida()" [mostrarErro]="verificaCampoInvalido('senha')">
                   </app-campo-erro>
                 </div>
 
                 <div class="form-group">
                   <label for="password-check">Confirmar Senha:</label>
                   <show-hide-password icon="fontawesome">
-                    <input id="password-check" type="password" class="form-control" formControlName="confirmarSenha" required>
+                    <input id="password-check" type="password" class="form-control" formControlName="confirmarSenha">
                   </show-hide-password>
                 </div>
 

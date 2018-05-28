@@ -20,6 +20,7 @@ import { FormSharedModule } from './shared/form-shared/form-shared.module';
 import { AuthGuard } from './api/auth-guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ServicoModule } from './servico/servico.module';
+import { SolicitarServicoComponent } from './solicitar-servico/solicitar-servico.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ServicoModule } from './servico/servico.module';
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
+    SolicitarServicoComponent,
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormSharedModule } from '../shared/form-shared/form-shared.module';
 import { ServicoRoutingModule } from './servico-routing.module';
+import { SolicitarServicoComponent } from './solicitar-servico/solicitar-servico.component';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { ServicoRoutingModule } from './servico-routing.module';
     FormSharedModule
   ],
   declarations: [
-    CadastrarServicoComponent
+    CadastrarServicoComponent,
+    SolicitarServicoComponent,
   ]
 })
 export class ServicoModule { }

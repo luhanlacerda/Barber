@@ -10,33 +10,41 @@
                 <div class="form-group">
                   <label for="descricao">Descrição:</label>
                   <input id="descricao" type="text" class="form-control" formControlName="descricao" autofocus>
+                  <app-campo-erro
+                  [msgErro]="descricaoInvalida()"
+                  [mostrarErro]="verificaCampoInvalido('descricao')">
+                  </app-campo-erro>
                 </div>
-                
-                <div class="form-group">
-                  <label for="valor">Valor:</label>
-                  <input id="valor" type="text" class="form-control" formControlName="valor" autofocus>
-                </div>
-                
-                <div class="form-group">
-                  <label for="situacao" class="control-label">Situação:</label>
-                  <select>
-                    <option value="None">Selecione</option>
-                    <option value="#">---</option>
-                    <option value="#">---</option>
-                  </select>
-                </div>
-                
-                <div class="form-group no-margin">
-                  <button type="submit" class="btn btn-primary btn-block">
-                    Cadastrar Serviço
-                  </button>
-                </div>
-                
-              </form>
-            </div>
+              
+              <div class="form-group">
+                <label for="valor">Valor:</label>
+                <input id="valor" type="text" class="form-control" formControlName="valor">
+                <app-campo-erro
+                  [msgErro]="valorNotInformed()"
+                  [mostrarErro]="verificaCampoInvalido('valor')">
+                </app-campo-erro>
+              </div>
+              
+              <div class="form-group">
+                <label for="situacao" class="control-label">Situação:</label>
+                <select class=situacao>
+                  <option value="None">Selecione</option>
+                  <option value="#">---</option>
+                  <option value="#">---</option>
+                </select>
+              </div>
+              
+              <div class="form-group no-margin">
+                <button type="submit" class="btn btn-primary btn-block">
+                  Cadastrar Serviço
+                </button>
+              </div>
+              
+            </form>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 </section>
