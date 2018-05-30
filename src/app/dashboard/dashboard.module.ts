@@ -27,6 +27,8 @@ import { ConfigurarContaComponent } from './configurar-conta/configurar-conta.co
     // Funcionário
     CadastrarFuncionarioComponent,
     AtualizarFuncionarioComponent,
+
+    // Usuário
     ConfigurarContaComponent
   ]
 })

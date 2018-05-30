@@ -8,21 +8,20 @@ body {
 }
 
 .center-all {
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 50px 75px;
+  display: inherit;
+  margin: 15px;
 }
 
 .element {
   background-color: #fed136;
-  display: -webkit-inline-box;
   margin: 10px;
-  justify-content:center;
-  align-items:center;
+  text-align: center;
+  border-radius: 45px;
 }
 
 .element h3 {
+  color: black;
+  text-decoration: none;
   margin: auto;
   min-height: 60px;
   padding-top: 20px;
@@ -32,13 +31,55 @@ body {
   text-align: -webkit-center;
 }
 
+section{
+  background-image: url("../../assets/img/styles.jpg");
+  background-repeat: no-repeat;
+  background-size: 100vw 100vh;
+}
+
+@media (max-width: 360px){
+  .element h3 {
+    width: 100%;
+    min-height: 0px;
+    padding-top: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    text-align: -webkit-center;
+  }
+}
+
+@media (max-width: 480px){
+  .center-all {
+    display: -webkit-inline-flex;
+    margin: 0px;
+    position: absolute;
+  }
+}
+
+@media (min-width: 569px){
+  .center-all {
+    /* display: -webkit-inline-flex; */
+    margin: 0px;
+  }
+}
+
+
+@media (max-width: 360px){
+  .element {
+    margin: 0px;
+    border-radius: 15px;
+  }
+}
+
 .element:hover {
-  -webkit-box-shadow: 0px 5px 19px 3px rgba(65, 58, 58, 0.1);
+  -webkit-box-shadow: 0px 5px 19px 3px rgba(61, 58, 58, 0.1);
   -moz-box-shadow: 0px 5px 19px 3px rgba(61, 58, 58, 0.1);
   box-shadow: 0px 5px 19px 3px rgba(61, 58, 58, 0.1);
 }
 
 .element img {
   max-width: 40px;
-  display: flex;
+  display: inline-block;
+  margin-top: 20px; 
 }

@@ -9,30 +9,30 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 })
 export class CadastrarFuncionarioComponent implements OnInit {
   
-  form_cad_fuc: FormGroup;
+  formulario: FormGroup;
   
   constructor(private formBuilder: FormBuilder) { }
   
   ngOnInit() {
     
-    this.form_cad_fuc = this.formBuilder.group({
-      nome: [null],
-      cpf: [null],
-      rg: [null],
-      sexo: [null],
-      dataNascimento: [null],
-      mes: [null],
-      ano: [null],
-      estado: [null],
-      endereco: [null],
-      senha: [null],
-      confirmarSenha: [null]
+    this.formulario = this.formBuilder.group({
+      nome: [null, Validators.required],
+      cpf: [null, Validators.required],
+      rg: [null, Validators.required],
+      sexo: [null, Validators.required],
+      dataNascimento: [null, Validators.required],
+      mes: [null, Validators.required],
+      ano: [null, Validators.required],
+      estado: [null, Validators.required],
+      endereco: [null, Validators.required],
+      senha: [null, Validators.required],
+      confirmarSenha: [null, Validators.required]
     });
   }
   
   onSubmit() {
     console.log("worked");
-    console.log(this.form_cad_fuc.controls);
+    console.log(this.formulario.controls);
     
     /**
     * Consumir os servicos da API (Cadastro Funcionario)
@@ -40,12 +40,12 @@ export class CadastrarFuncionarioComponent implements OnInit {
     */
   }
   verificaCampoInvalido(campo: string) {
-    return this.form_cad_fuc.get(campo).invalid && (this.form_cad_fuc.get(campo).touched || this.form_cad_fuc.get(campo).dirty);
+    return this.formulario.get(campo).invalid && (this.formulario.get(campo).touched || this.formulario.get(campo).dirty);
   }
   
   nomeInvalido() {
     if (this.verificaCampoInvalido('nome')) {
-      const erros = this.form_cad_fuc.get('nome').errors;
+      const erros = this.formulario.get('nome').errors;
       var msgs = [];
       
       if (erros.required) {
@@ -68,7 +68,7 @@ export class CadastrarFuncionarioComponent implements OnInit {
   
   rgInvalido(){
     if (this.verificaCampoInvalido('rg')) {
-      const erros = this.form_cad_fuc.get('rg').errors;
+      const erros = this.formulario.get('rg').errors;
       var msgs = [];
       
       if (erros.required) {
@@ -90,7 +90,7 @@ export class CadastrarFuncionarioComponent implements OnInit {
 
   cpfInvalido(){
     if (this.verificaCampoInvalido('cpf')) {
-      const erros = this.form_cad_fuc.get('cpf').errors;
+      const erros = this.formulario.get('cpf').errors;
       var msgs = [];
       
       if (erros.required) {
@@ -105,7 +105,7 @@ export class CadastrarFuncionarioComponent implements OnInit {
 
   enderecoInvalido(){
   if (this.verificaCampoInvalido('endereco')) {
-    const erros = this.form_cad_fuc.get('endereco').errors;
+    const erros = this.formulario.get('endereco').errors;
     var msgs = [];
     
     if (erros.required) {
@@ -124,7 +124,7 @@ export class CadastrarFuncionarioComponent implements OnInit {
 
 mensagensSenhaInvalida() {
   if (this.verificaCampoInvalido('senha')) {
-    const erros = this.form_cad_fuc.get('senha').errors;
+    const erros = this.formulario.get('senha').errors;
     var msgs = [];
 
     if (erros.required) {
