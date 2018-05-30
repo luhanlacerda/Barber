@@ -17,7 +17,6 @@ import { ApiService } from './api/api.service';
 import { AuthInterceptor } from './api/auth-interceptor';
 import { FormSharedModule } from './shared/form-shared/form-shared.module';
 import { AuthGuard } from './api/auth.guard';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 
 @NgModule({
@@ -29,8 +28,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    RegisterComponent,
-    DashboardComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

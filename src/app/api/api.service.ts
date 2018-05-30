@@ -18,7 +18,20 @@ export class ApiService {
   }
 
   registrarCliente(user: User) {
-    return this.http.post(this.basePath + "/usuario/registrar/cliente", { email: user.email, senha: user.senha });
+    return this.http.post(this.basePath + "/usuario/registrar/cliente", { nome: user.nome, cpf: user.cpf, email: user.email, senha: user.senha });
+  }
+
+  visualizarDados() {
+    return this.http.get(this.basePath + "/usuario");
+  }
+
+  atualizarCliente(user: User) {
+    let params = { nome: user.nome }
+    if (user.senha !== undefined && user.senha !== null && user.senha !== "") {
+      params["senha"] = user.senha;
+    }
+
+    return this.http.put(this.basePath + "/usuario", params);
   }
 
 }

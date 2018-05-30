@@ -1,5 +1,3 @@
-import { Estado } from './estado';
-import { Endereco } from './endereco';
 import { Cargo } from "./cargo";
 
 export abstract class Pessoa {
@@ -7,11 +5,6 @@ export abstract class Pessoa {
     private _cargo: Cargo;
     private _nome: string;
     private _cpf: string;
-    private _rg: string;
-    private _endereco: Endereco;
-    private _dataNascimento: Date;
-    private _estado: Estado;
-    private _sexo: string
 
     public get email(): string {
         return this._email;
@@ -43,45 +36,5 @@ export abstract class Pessoa {
     
     public set cpf(cpf: string) {
         this._cpf = cpf;
-    }
-    
-    public get rg(): string {
-        return this._rg;
-    }
-    
-    public set rg(rg: string) {
-        this._rg = rg;
-    }
-
-    public get endereco(): Endereco {
-        return this._endereco;
-    }
-    
-    public set endereco(endereco: Endereco) {
-        this._endereco = endereco;
-    }
-
-    public get dataNascimento(): Date {
-        return this._dataNascimento;
-    }
-    
-    public set dataNascimento(dataNascimento: Date) {
-        this._dataNascimento = dataNascimento;
-    }
-
-    public get estado(): Estado {
-        return this._estado;
-    }
-    
-    public set estado(estado: Estado) {
-        this._estado = estado;
-    }
-
-    public get sexo(): string {
-        return this._sexo;
-    }
-    
-    public set sexo(sexo: string) {
-        this._sexo = sexo;
     }
 }
