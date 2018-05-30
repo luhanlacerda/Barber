@@ -1,8 +1,17 @@
 export class Servico {
     readonly id: number;
+    private _nome: string;
     private _descricao: string;
     private _valor: number;
     private _situacao: any;
+
+    public get nome(): string {
+        return this._nome;
+    }
+
+    public set nome(nome: string) {
+        this._nome = nome;
+    }
 
     public get descricao(): string {
         return this._descricao;

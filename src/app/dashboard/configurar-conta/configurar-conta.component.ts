@@ -2,18 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { BarberValidator } from './../shared/barber-validator';
-import { ApiService } from '../api/api.service';
-import { User } from '../classesBasicas/user';
-import { Cargo } from '../classesBasicas/cargo';
-import { Login } from '../classesBasicas/login';
+import { ApiService } from '../../api/api.service';
+import { BarberValidator } from '../../shared/barber-validator';
+import { User } from '../../classesBasicas/user';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-configurar-conta',
+  templateUrl: './configurar-conta.component.html',
+  styleUrls: ['./configurar-conta.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class ConfigurarContaComponent implements OnInit {
 
   formulario: FormGroup;
   apiError: string[] = [];
@@ -23,29 +21,38 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.formulario = this.formBuilder.group({
       nome: ["", [Validators.required, Validators.minLength(5)]],
-      cpf: ["", [Validators.required, BarberValidator.OnlyNumbers, BarberValidator.ExactLength(11)]],
-      email: ["", [Validators.required, Validators.email]],
-      senha: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      cpf: [""],
+      cargo: [""],
+      email: [""],
+      senha: ["", [BarberValidator.MinLengthOrNaN(3), BarberValidator.MaxLengthOrNan(20)]],
       confirmarSenha: [""]
     },
     {
       validator: BarberValidator.MatchPassword
     });
+
+    this.apiService.visualizarDados().subscribe(
+      res => {
+        this.formulario.get("nome").setValue(res["nome"]);
+        this.formulario.get("cpf").setValue(res["cpf"]);
+        this.formulario.get("cargo").setValue(res["cargo"]);
+        this.formulario.get("email").setValue(res["email"]);
+      },
+      err => { this.apiError = [err["error"]["message"]]; }
+    );
   }
 
   onSubmit() {
     if (this.formulario.valid) {
       let user: User = new User();
       user.nome = this.formulario.get("nome").value;
-      user.cpf = this.formulario.get("cpf").value;
-      user.email = this.formulario.get("email").value;
-      user.senha = this.formulario.get('senha').value;
+      if (this.formulario.get('senha').value !== "") {
+        user.senha = this.formulario.get('senha').value;
+      }
 
-      this.apiService.registrarCliente(user).subscribe(
+      this.apiService.atualizarCliente(user).subscribe(
         res => {
-          let login: Login = { token: res["token"], email: user.email, cargo: res["cargo"] };
-          localStorage.setItem("login", JSON.stringify(login));
-          this.router.navigate(['/']);
+          this.router.navigate(['/dashboard']);
         },
         err => { this.apiError = [err["error"]["message"]]; }
       );
@@ -81,62 +88,16 @@ export class RegisterComponent implements OnInit {
     return [];
   }
 
-  mensagensCpfInvalido() {
-    if (this.verificaCampoInvalido('cpf')) {
-      let erros = this.formulario.get('cpf').errors;
-      let msgs = [];
-
-      if (erros.required) {
-        msgs.push("CPF não informado.");
-      }
-
-      if (erros.onlyNumbers) {
-        msgs.push("CPF deve conter apenas números.");
-      }
-
-      if (erros.exactLength !== undefined) {
-        msgs.push(`CPF deve conter ${erros.exactLength.requiredLength} caracteres.`);
-      }
-
-      return msgs;
-    }
-
-    return [];
-  }
-
-  mensagensEmailInvalido() {
-    if (this.verificaCampoInvalido('email')) {
-      let erros = this.formulario.get('email').errors;
-      let msgs = [];
-
-      if (erros.required) {
-        msgs.push("Email não informado.");
-      }
-
-      if (erros.email) {
-        msgs.push("Email inválido.");
-      }
-
-      return msgs;
-    }
-
-    return [];
-  }
-
   mensagensSenhaInvalida() {
     if (this.verificaCampoInvalido('senha')) {
       let erros = this.formulario.get('senha').errors;
       let msgs = [];
 
-      if (erros.required) {
-        msgs.push("Senha não informada.");
-      }
-
-      if (erros.required === undefined && erros.minlength !== undefined) {
+      if (erros.minlength !== undefined) {
         msgs.push(`Senha deve possuir no mínimo ${erros.minlength.requiredLength} caracteres.`);
       }
 
-      if (erros.required === undefined && erros.maxlength !== undefined) {
+      if (erros.maxlength !== undefined) {
         msgs.push(`Senha deve possuir no máximo ${erros.maxlength.requiredLength} caracteres.`);
       }
 

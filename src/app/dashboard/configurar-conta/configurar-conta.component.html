@@ -5,11 +5,11 @@
         <div class="card-wrapper mx-auto">
           <div class="card fat">
             <div class="card-body">
-              <h4 class="card-title text-center">Registrar</h4>
+              <h4 class="card-title text-center">Configurações da Conta</h4>
               <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                   <label for="name">Nome</label>
-                  <input id="name" type="text" class="form-control" formControlName="nome" autofocus>
+                  <input id="name" type="text" class="form-control" formControlName="nome">
                   <app-campo-erro
                     [msgErro]="mensagensNomeInvalido()"
                     [mostrarErro]="verificaCampoInvalido('nome')">
@@ -18,20 +18,17 @@
 
                 <div class="form-group">
                   <label for="cpf">CPF</label>
-                  <input id="cpf" type="text" class="form-control" formControlName="cpf">
-                  <app-campo-erro
-                    [msgErro]="mensagensCpfInvalido()"
-                    [mostrarErro]="verificaCampoInvalido('cpf')">
-                  </app-campo-erro>
+                  <input id="cpf" type="text" class="form-control" formControlName="cpf" readonly>
+                </div>
+
+                <div class="form-group">
+                  <label for="Cargo">Cargo</label>
+                  <input id="cargo" type="text" class="form-control" formControlName="cargo" readonly>
                 </div>
 
                 <div class="form-group">
                   <label for="email">E-Mail</label>
-                  <input id="email" type="email" class="form-control" formControlName="email">
-                  <app-campo-erro
-                    [msgErro]="mensagensEmailInvalido()"
-                    [mostrarErro]="verificaCampoInvalido('email')">
-                  </app-campo-erro>
+                  <input id="email" type="email" class="form-control" formControlName="email" readonly>
                 </div>
 
                 <div class="form-group">
@@ -58,12 +55,8 @@
 
                 <div class="form-group no-margin">
                   <button type="submit" class="btn btn-primary btn-block">
-                    Registrar
+                    Salvar
                   </button>
-                </div>
-                <div class="margin-top20 text-center">
-                  Já possui uma conta?
-                  <a routerLink="/login">Login</a>
                 </div>
               </form>
 
