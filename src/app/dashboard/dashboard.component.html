@@ -3,15 +3,15 @@
   <div class="container">
       <div class="row">
         <div class="center-all">
-          <div class="col-3 col-sm-3 col-md-4 element">
+          <a *ngIf="isCliente()" class="col-3 col-sm-3 col-md-4 element" routerLink="/dashboard/servico/solicitar">
             <img src="assets/img/icons-barber/barbershop.png" alt="" />
             <h3>Solicitar Serviço</h3>
-          </div>
-          <div class="col-3 col-sm-2 col-md-4 element">
+          </a>
+          <div *ngIf="isCliente()" class="col-3 col-sm-3 col-md-4 element">
             <img src="assets/img/icons-barber/calendar.png" alt="" />
             <h3>Minha Agenda</h3>
           </div>
-          <!-- <div class="col-3 col-sm-2 col-md-4 element">
+          <!-- <div class="col-3 col-sm-3 col-md-4 element">
             <img src="assets/img/icons-barber/coupon.png" alt="" />
             <h3>Cupons</h3>
           </div> -->

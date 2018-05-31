@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { BarberValidator } from './../shared/barber-validator';
-import { ApiService } from '../api/api.service';
+import { BarberValidator } from '../shared/validators/barber-validator';
+import { ApiService } from '../shared/api/api.service';
 import { User } from '../classesBasicas/user';
 import { Cargo } from '../classesBasicas/cargo';
 import { Login } from '../classesBasicas/login';

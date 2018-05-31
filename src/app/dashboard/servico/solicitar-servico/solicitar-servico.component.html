@@ -1,0 +1,77 @@
+<section id="my-login-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card-wrapper mx-auto">
+          <div class="card fat">
+            <div class="card-body">
+              <h4 class="card-title text-center">Solicitar Serviço</h4>
+              <form (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                  <h6>Selecione os serviços que desejar</h6>
+                  <table class="table">
+                    <caption class="text-right">Total: {{ total | currency:'BRL' }}</caption>
+                    <thead class="thead-light">
+                      <tr class="text-center">
+                        <th scope="col">Id</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Valor</th>
+                        <th scope="col">Comprar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let service of services" [class.bg-primary]="cart.includes(service)" class="text-center">
+                        <th scope="row">{{ service.id }}</th>
+                        <td>{{ service.nome }}</td>
+                        <td>{{ service.descricao }}</td>
+                        <td>{{ service.valor | currency:'BRL' }}</td>
+                        <td>
+                          <a class="fa" [ngClass]="{'fa-cart-plus': !cart.includes(service), 'fa-cart-arrow-down': cart.includes(service)}" (click)="addCart(service)"></a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="form-inline">
+                  <div class="form-group">
+                    <h6>Selecione a data:</h6>
+                    <div id="date-picker" class="input-group">
+                      <input class="form-control" placeholder="yyyy-mm-dd" [(ngModel)]="data" ngbDatepicker #d="ngbDatepicker" [ngModelOptions]="{standalone: true}">
+                      <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                          <!-- <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;" /> -->
+                          <i class="fa fa-calendar"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <app-campo-erro [msgErro]="['Data inválida']" [mostrarErro]="data !== undefined && !validarData()"></app-campo-erro>
+
+                <div class="form-inline">
+                  <div class="form-group">
+                    <h6>Selecione o horário:</h6>
+                    <ngb-timepicker id="time-picker" [(ngModel)]="horario" [ngModelOptions]="{standalone: true}"></ngb-timepicker>
+                  </div>
+                </div>
+                <app-campo-erro [msgErro]="['Horário inválida']" [mostrarErro]="horario !== undefined && !validarHorario()"></app-campo-erro>
+
+                <div class="form-group margin-top-20">
+                  <button type="submit" class="btn btn-primary btn-block">
+                    Salvar
+                  </button>
+                </div>
+              </form>
+
+              <app-campo-erro [msgErro]="apiError" [mostrarErro]="apiError.length != 0">
+              </app-campo-erro>
+            </div>
+          </div>
+        </div>
+        <app-form-debug [form]="formulario"></app-form-debug>
+      </div>
+    </div>
+  </div>
+</section>

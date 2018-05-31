@@ -2,7 +2,7 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { ApiService } from '../api/api.service';
+import { ApiService } from '../shared/api/api.service';
 import { User } from '../classesBasicas/user';
 import { Login } from '../classesBasicas/login';
 

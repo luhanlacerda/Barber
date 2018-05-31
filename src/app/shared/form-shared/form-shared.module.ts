@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { FormDebugComponent } from './form-debug/form-debug.component';
 import { CampoErroComponent } from './campo-erro/campo-erro.component';
@@ -8,6 +8,7 @@ import { CampoErroComponent } from './campo-erro/campo-erro.component';
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     ReactiveFormsModule
   ],
   declarations: [
@@ -15,6 +16,7 @@ import { CampoErroComponent } from './campo-erro/campo-erro.component';
     CampoErroComponent
   ],
   exports: [
+    FormsModule,
     ReactiveFormsModule,
     FormDebugComponent,
     CampoErroComponent

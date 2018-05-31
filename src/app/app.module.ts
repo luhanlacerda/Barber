@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
+import { NgbModule, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -13,11 +14,13 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { ApiService } from './api/api.service';
-import { AuthInterceptor } from './api/auth-interceptor';
+import { ApiService } from './shared/api/api.service';
+import { AuthInterceptor } from './shared/interceptors/auth-interceptor';
 import { FormSharedModule } from './shared/form-shared/form-shared.module';
-import { AuthGuard } from './api/auth.guard';
+import { AuthGuard } from './shared/guards/auth.guard';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { ClienteGuard } from './shared/guards/cliente.guard';
+import { CustomNgbDateParserFormatter } from './shared/validators/custom-ngb-date-fr-parser-formatter';
 
 @NgModule({
   declarations: [
@@ -36,13 +39,18 @@ import { DashboardModule } from './dashboard/dashboard.module';
     DashboardModule,
     FormSharedModule,
     ShowHidePasswordModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule.forRoot()
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true,
+    },
+    {
+      provide: NgbDateParserFormatter,
+      useClass: CustomNgbDateParserFormatter
     },
     AuthGuard,
     ApiService

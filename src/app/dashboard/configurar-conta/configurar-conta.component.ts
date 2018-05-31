@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
-import { ApiService } from '../../api/api.service';
-import { BarberValidator } from '../../shared/barber-validator';
+import { ApiService } from '../../shared/api/api.service';
+import { BarberValidator } from '../../shared/validators/barber-validator';
 import { User } from '../../classesBasicas/user';
 
 @Component({
@@ -16,7 +16,11 @@ export class ConfigurarContaComponent implements OnInit {
   formulario: FormGroup;
   apiError: string[] = [];
 
-  constructor(private apiService: ApiService, private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private apiService: ApiService,
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private activatedRoute: ActivatedRoute) { 
+  }
 
   ngOnInit() {
     this.formulario = this.formBuilder.group({
@@ -31,14 +35,13 @@ export class ConfigurarContaComponent implements OnInit {
       validator: BarberValidator.MatchPassword
     });
 
-    this.apiService.visualizarDados().subscribe(
-      res => {
-        this.formulario.get("nome").setValue(res["nome"]);
-        this.formulario.get("cpf").setValue(res["cpf"]);
-        this.formulario.get("cargo").setValue(res["cargo"]);
-        this.formulario.get("email").setValue(res["email"]);
-      },
-      err => { this.apiError = [err["error"]["message"]]; }
+    this.activatedRoute.data.subscribe(
+      (res: {user: User}) => {
+        this.formulario.get("nome").setValue(res.user.nome);
+        this.formulario.get("cpf").setValue(res.user.cpf);
+        this.formulario.get("cargo").setValue(res.user.cargo);
+        this.formulario.get("email").setValue(res.user.email);
+      }
     );
   }
 
