@@ -11,6 +11,8 @@ import { AtualizarFuncionarioComponent } from './funcionario/atualizar-funcionar
 import { SolicitarServicoComponent } from './servico/solicitar-servico/solicitar-servico.component';
 import { SolicitarServicoResolver } from '../shared/resolvers/solicitar-servico.resolver';
 import { ConfigurarContaResolver } from '../shared/resolvers/configurar-conta.resolver';
+import { MinhaAgendaComponent } from './minha-agenda/minha-agenda.component';
+import { MinhaAgendaResolver } from '../shared/resolvers/minha-agenda.resolver';
 
 const routes: Routes = [
   { path: 'dashboard', canActivate: [AuthGuard], children: [
@@ -20,6 +22,8 @@ const routes: Routes = [
     // Serviço
     { path: 'servico/cadastrar', component: CadastrarServicoComponent },
     { path: 'servico/solicitar', component: SolicitarServicoComponent, canActivate: [ClienteGuard], resolve: { servicos: SolicitarServicoResolver } },
+
+    { path: 'agenda', component: MinhaAgendaComponent, canActivate: [ClienteGuard], resolve: { agendamentos: MinhaAgendaResolver } },
 
     // Funcionário
     { path: 'funcionario/cadastrar', component: CadastrarFuncionarioComponent },

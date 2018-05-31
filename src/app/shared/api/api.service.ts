@@ -44,4 +44,8 @@ export class ApiService {
     return this.http.post(this.basePath + "/agendamento/cliente", params);
   }
 
+  minhaAgenda() {
+    return this.http.get(this.basePath + "/agendamento/cliente");
+  }
+
 }

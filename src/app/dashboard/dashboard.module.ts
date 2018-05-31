@@ -15,6 +15,8 @@ import { SolicitarServicoComponent } from './servico/solicitar-servico/solicitar
 import { ClienteGuard } from '../shared/guards/cliente.guard';
 import { ConfigurarContaResolver } from '../shared/resolvers/configurar-conta.resolver';
 import { SolicitarServicoResolver } from '../shared/resolvers/solicitar-servico.resolver';
+import { MinhaAgendaComponent } from './minha-agenda/minha-agenda.component';
+import { MinhaAgendaResolver } from '../shared/resolvers/minha-agenda.resolver';
 
 @NgModule({
   imports: [
@@ -26,6 +28,9 @@ import { SolicitarServicoResolver } from '../shared/resolvers/solicitar-servico.
   ],
   declarations: [
     DashboardComponent,
+
+    // Agenda
+    MinhaAgendaComponent,
 
     // Serviço
     CadastrarServicoComponent,
@@ -41,6 +46,7 @@ import { SolicitarServicoResolver } from '../shared/resolvers/solicitar-servico.
   providers: [
     ClienteGuard,
     ConfigurarContaResolver,
+    MinhaAgendaResolver,
     SolicitarServicoResolver
   ]
 })
