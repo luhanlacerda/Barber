@@ -13,6 +13,7 @@ import { SolicitarServicoResolver } from '../shared/resolvers/solicitar-servico.
 import { ConfigurarContaResolver } from '../shared/resolvers/configurar-conta.resolver';
 import { MinhaAgendaComponent } from './minha-agenda/minha-agenda.component';
 import { MinhaAgendaResolver } from '../shared/resolvers/minha-agenda.resolver';
+import { FuncionarioGuard } from '../shared/guards/funcionario.guard';
 
 const routes: Routes = [
   { path: 'dashboard', canActivate: [AuthGuard], children: [
@@ -20,7 +21,7 @@ const routes: Routes = [
     { path: 'configurar-conta', component: ConfigurarContaComponent, resolve: { user: ConfigurarContaResolver } },
 
     // Serviço
-    { path: 'servico/cadastrar', component: CadastrarServicoComponent },
+    { path: 'servico/cadastrar', component: CadastrarServicoComponent, canActivate: [FuncionarioGuard] },
     { path: 'servico/solicitar', component: SolicitarServicoComponent, canActivate: [ClienteGuard], resolve: { servicos: SolicitarServicoResolver } },
 
     { path: 'agenda', component: MinhaAgendaComponent, canActivate: [ClienteGuard], resolve: { agendamentos: MinhaAgendaResolver } },

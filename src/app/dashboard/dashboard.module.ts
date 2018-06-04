@@ -17,6 +17,7 @@ import { ConfigurarContaResolver } from '../shared/resolvers/configurar-conta.re
 import { SolicitarServicoResolver } from '../shared/resolvers/solicitar-servico.resolver';
 import { MinhaAgendaComponent } from './minha-agenda/minha-agenda.component';
 import { MinhaAgendaResolver } from '../shared/resolvers/minha-agenda.resolver';
+import { FuncionarioGuard } from '../shared/guards/funcionario.guard';
 
 @NgModule({
   imports: [
@@ -45,6 +46,7 @@ import { MinhaAgendaResolver } from '../shared/resolvers/minha-agenda.resolver';
   ],
   providers: [
     ClienteGuard,
+    FuncionarioGuard,
     ConfigurarContaResolver,
     MinhaAgendaResolver,
     SolicitarServicoResolver

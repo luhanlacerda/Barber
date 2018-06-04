@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { User } from '../../classesBasicas/user';
 import { Agendamento } from './../../classesBasicas/agendamento';
+import { Servico } from '../../classesBasicas/servico';
 
 @Injectable()
 export class ApiService {
@@ -26,7 +27,8 @@ export class ApiService {
   }
 
   atualizarCliente(user: User) {
-    let params = { nome: user.nome }
+    let params = { nome: user.nome };
+
     if (user.senha !== undefined && user.senha !== null && user.senha !== "") {
       params["senha"] = user.senha;
     }
@@ -46,6 +48,12 @@ export class ApiService {
 
   minhaAgenda() {
     return this.http.get(this.basePath + "/agendamento/cliente");
+  }
+
+  cadastrarServico(servico: Servico) {
+    let params = { nome: servico.nome, descricao: servico.descricao, valor: servico.valor };
+
+    return this.http.post(this.basePath + "/servico", params);
   }
 
 }

@@ -7,7 +7,7 @@
             <img src="assets/img/icons-barber/barbershop.png" alt="" />
             <h3>Solicitar Serviço</h3>
           </a>
-          <div *ngIf="isCliente()" class="col-3 col-sm-3 col-md-4 element">
+          <div *ngIf="isCliente()" class="col-3 col-sm-3 col-md-4 element" routerLink="/dashboard/agenda">
             <img src="assets/img/icons-barber/calendar.png" alt="" />
             <h3>Minha Agenda</h3>
           </div>
@@ -15,6 +15,10 @@
             <img src="assets/img/icons-barber/coupon.png" alt="" />
             <h3>Cupons</h3>
           </div> -->
+          <div *ngIf="isFuncionario()" class="col-3 col-sm-3 col-md-4 element" routerLink="/dashboard/servico/cadastrar">
+            <img src="assets/img/icons-barber/calendar.png" alt="" />
+            <h3>Cadastrar Serviço</h3>
+          </div>
           <a class="col-3 col-sm-3 col-md-4 element" routerLink="/dashboard/configurar-conta">
             <img src="assets/img/icons-barber/settings.png" alt="" />
             <h3>Configurar Conta</h3>
