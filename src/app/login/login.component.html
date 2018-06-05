@@ -10,9 +10,7 @@
                 <div class="form-group">
                   <label for="email">E-Mail</label>
                   <input id="email" type="email" class="form-control" formControlName="email" autofocus>
-                  <app-campo-erro
-                    [msgErro]="mensagensEmailInvalido()"
-                    [mostrarErro]="verificaCampoInvalido('email')">
+                  <app-campo-erro [msgErro]="mensagensEmailInvalido()" [mostrarErro]="verificaCampoInvalido('email')">
                   </app-campo-erro>
                 </div>
 
@@ -21,9 +19,7 @@
                   <show-hide-password icon="fontawesome">
                     <input id="password" type="password" class="form-control" formControlName="senha">
                   </show-hide-password>
-                  <app-campo-erro
-                    [msgErro]="mensagensSenhaInvalida()"
-                    [mostrarErro]="verificaCampoInvalido('senha')">
+                  <app-campo-erro [msgErro]="mensagensSenhaInvalida()" [mostrarErro]="verificaCampoInvalido('senha')">
                   </app-campo-erro>
                 </div>
 
@@ -37,15 +33,12 @@
                   <a routerLink="/registrar">Criar uma</a>
                 </div>
               </form>
-              
-              <app-campo-erro
-                    [msgErro]="apiError"
-                    [mostrarErro]="apiError.length != 0">
+
+              <app-campo-erro [msgErro]="apiError" [mostrarErro]="apiError.length != 0">
               </app-campo-erro>
             </div>
           </div>
         </div>
-        <app-form-debug [form]="formulario"></app-form-debug>
       </div>
     </div>
   </div>

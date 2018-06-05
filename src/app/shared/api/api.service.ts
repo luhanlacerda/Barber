@@ -15,11 +15,15 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   login(user: User) {
-    return this.http.post(this.basePath + "/usuario/login", { email: user.email, senha: user.senha });
+    let params = { email: user.email, senha: user.senha };
+
+    return this.http.post(this.basePath + "/usuario/login", params);
   }
 
   registrarCliente(user: User) {
-    return this.http.post(this.basePath + "/usuario/registrar/cliente", { nome: user.nome, cpf: user.cpf, email: user.email, senha: user.senha });
+    let params = { nome: user.nome, cpf: user.cpf, email: user.email, senha: user.senha };
+
+    return this.http.post(this.basePath + "/usuario/registrar/cliente", params);
   }
 
   visualizarDados() {
@@ -54,6 +58,28 @@ export class ApiService {
     let params = { nome: servico.nome, descricao: servico.descricao, valor: servico.valor };
 
     return this.http.post(this.basePath + "/servico", params);
+  }
+
+  atualizarServico(servico: Servico) {
+    let params = { nome: servico.nome, descricao: servico.descricao, valor: servico.valor };
+
+    return this.http.put(this.basePath + `/servico/${servico.id}`, params);
+  }
+
+  visualizarAgendamentos() {
+    return this.http.get(this.basePath + "/agendamento");
+  }
+
+  atualizarAgendamento(agendamento: Agendamento) {
+    let params = { situacao: agendamento.situacao, pagamento: agendamento.pagamento };
+
+    return this.http.put(this.basePath + `/agendamento/${agendamento.id}`, params);
+  }
+
+  registrarFuncionario(user: User) {
+    let params = { nome: user.nome, cpf: user.cpf, email: user.email, senha: user.senha };
+
+    return this.http.post(this.basePath + "/usuario/registrar/funcionario", params);
   }
 
 }

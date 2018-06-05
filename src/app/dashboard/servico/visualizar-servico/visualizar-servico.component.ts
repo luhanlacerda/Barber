@@ -1,24 +1,33 @@
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 
-import { ApiService } from '../../../shared/api/api.service';
+import { ApiService } from './../../../shared/api/api.service';
 import { Servico } from './../../../classesBasicas/servico';
 
 @Component({
-  selector: 'app-cadastrar-servico',
-  templateUrl: './cadastrar-servico.component.html',
-  styleUrls: ['./cadastrar-servico.component.css']
+  selector: 'app-visualizar-servico',
+  templateUrl: './visualizar-servico.component.html',
+  styleUrls: ['./visualizar-servico.component.css']
 })
-export class CadastrarServicoComponent implements OnInit {
+export class VisualizarServicoComponent implements OnInit {
 
+  servicos: Servico[];
+  servicoActivated: Servico;
+  isEditing: boolean;
   formulario: FormGroup;
   apiError: string[] = [];
 
-  constructor(private apiService: ApiService, private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private apiService: ApiService, private formBuilder: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.activatedRoute.data.subscribe(
+      (res: { servicos: Servico[] }) => {
+        this.servicos = res.servicos["servicos"];
+      }
+    );
     this.formulario = this.formBuilder.group({
+      id: [""], 
       nome: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
       descricao: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
       valor: ["", [Validators.required, Validators.min(0), Validators.max(1500)]]
@@ -28,13 +37,13 @@ export class CadastrarServicoComponent implements OnInit {
   onSubmit() {
     if (this.formulario.valid) {
       let servico: Servico = {
-        id: 0,
+        id: this.servicoActivated.id,
         nome: this.formulario.get("nome").value,
         descricao: this.formulario.get("descricao").value,
         valor: this.formulario.get("valor").value
       };
 
-      this.apiService.cadastrarServico(servico).subscribe(
+      this.apiService.atualizarServico(servico).subscribe(
         res => {
           this.router.navigate(['/dashboard']);
         },
@@ -43,6 +52,23 @@ export class CadastrarServicoComponent implements OnInit {
     } else {
       this.apiError = [];
     }
+  }
+
+  onEdit() {
+    if (!this.isEditing) {
+      this.isEditing = true;
+    } else {
+      this.isEditing = false;
+    }
+  }
+
+  onItemClicked(servico: Servico) {
+    this.servicoActivated = servico;
+
+    this.formulario.get("id").setValue(servico.id);
+    this.formulario.get("nome").setValue(servico.nome);
+    this.formulario.get("descricao").setValue(servico.descricao);
+    this.formulario.get("valor").setValue(servico.valor);
   }
 
   verificaCampoInvalido(campo: string) {

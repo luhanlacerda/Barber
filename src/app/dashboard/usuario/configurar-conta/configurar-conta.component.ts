@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { ApiService } from '../../shared/api/api.service';
-import { BarberValidator } from '../../shared/validators/barber-validator';
-import { User } from '../../classesBasicas/user';
+import { ApiService } from '../../../shared/api/api.service';
+import { BarberValidator } from '../../../shared/validators/barber-validator';
+import { User } from '../../../classesBasicas/user';
 
 @Component({
   selector: 'app-configurar-conta',

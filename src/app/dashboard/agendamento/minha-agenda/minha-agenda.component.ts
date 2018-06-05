@@ -3,10 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 
 import * as moment from 'moment';
 
-import { Agendamento } from './../../classesBasicas/agendamento';
-import { Situacao } from '../../classesBasicas/situacao';
-import { Pagamento } from '../../classesBasicas/pagamento';
-import { Servico } from './../../classesBasicas/servico';
+import { Agendamento } from '.././../../classesBasicas/agendamento';
+import { Situacao } from '../../../classesBasicas/situacao';
+import { Pagamento } from '../../../classesBasicas/pagamento';
+import { Servico } from '../../../classesBasicas/servico';
 
 @Component({
   selector: 'app-minha-agenda',

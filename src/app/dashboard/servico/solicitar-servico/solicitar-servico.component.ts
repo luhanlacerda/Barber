@@ -15,7 +15,6 @@ import { Agendamento } from './../../../classesBasicas/agendamento';
 })
 export class SolicitarServicoComponent implements OnInit {
 
-
   apiError: string[] = [];
   services: Servico[];
   cart: Servico[] = [];

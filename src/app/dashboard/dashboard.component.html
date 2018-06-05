@@ -1,29 +1,41 @@
 <section>
   <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat" rel="stylesheet">
   <div class="container">
-      <div class="row">
-        <div class="center-all">
-          <a *ngIf="isCliente()" class="col-3 col-sm-3 col-md-4 element" routerLink="/dashboard/servico/solicitar">
-            <img src="assets/img/icons-barber/barbershop.png" alt="" />
-            <h3>Solicitar Serviço</h3>
-          </a>
-          <div *ngIf="isCliente()" class="col-3 col-sm-3 col-md-4 element" routerLink="/dashboard/agenda">
-            <img src="assets/img/icons-barber/calendar.png" alt="" />
-            <h3>Minha Agenda</h3>
-          </div>
-          <!-- <div class="col-3 col-sm-3 col-md-4 element">
+    <div class="row">
+      <div class="col-md-6 center-all">
+        <a *ngIf="isCliente()" class="col-3 col-sm-3 col-md-4 element" routerLink="/dashboard/servico/solicitar">
+          <img src="assets/img/icons-barber/barbershop.png" alt="" />
+          <h3>Solicitar Serviço</h3>
+        </a>
+        <a *ngIf="isCliente()" class="col-3 col-sm-3 col-md-4 element" routerLink="/dashboard/agendamento/meu">
+          <img src="assets/img/icons-barber/calendar.png" alt="" />
+          <h3>Minha Agenda</h3>
+        </a>
+        <!-- <div class="col-3 col-sm-3 col-md-4 element">
             <img src="assets/img/icons-barber/coupon.png" alt="" />
             <h3>Cupons</h3>
           </div> -->
-          <div *ngIf="isFuncionario()" class="col-3 col-sm-3 col-md-4 element" routerLink="/dashboard/servico/cadastrar">
-            <img src="assets/img/icons-barber/calendar.png" alt="" />
-            <h3>Cadastrar Serviço</h3>
-          </div>
-          <a class="col-3 col-sm-3 col-md-4 element" routerLink="/dashboard/configurar-conta">
-            <img src="assets/img/icons-barber/settings.png" alt="" />
-            <h3>Configurar Conta</h3>
-          </a>
-        </div>
+        <a *ngIf="isFuncionario()" class="col-3 col-sm-3 col-md-4 element" routerLink="/dashboard/servico/cadastrar">
+          <img src="assets/img/icons-barber/calendar.png" alt="" />
+          <h3>Cadastrar Serviço</h3>
+        </a>
+        <a *ngIf="isFuncionario()" class="col-3 col-sm-3 col-md-4 element" routerLink="/dashboard/funcionario/cadastrar">
+          <img src="assets/img/icons-barber/calendar.png" alt="" />
+          <h3>Cadastrar Funcionários</h3>
+        </a>
+        <a *ngIf="isFuncionario()" class="col-3 col-sm-3 col-md-4 element" routerLink="/dashboard/servico/visualizar">
+          <img src="assets/img/icons-barber/calendar.png" alt="" />
+          <h3>Visualizar Serviço</h3>
+        </a>
+        <a *ngIf="isFuncionario()" class="col-3 col-sm-3 col-md-4 element" routerLink="/dashboard/agendamento/todos">
+          <img src="assets/img/icons-barber/calendar.png" alt="" />
+          <h3>Visualizar Agendamentos</h3>
+        </a>
+        <a class="col-3 col-sm-3 col-md-4 element" routerLink="/dashboard/configurar-conta">
+          <img src="assets/img/icons-barber/settings.png" alt="" />
+          <h3>Configurar Conta</h3>
+        </a>
       </div>
     </div>
+  </div>
 </section>

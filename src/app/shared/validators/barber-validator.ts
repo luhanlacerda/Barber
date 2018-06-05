@@ -1,5 +1,8 @@
 import { AbstractControl, ValidatorFn, ValidationErrors } from "@angular/forms";
 
+import { Situacao } from "../../classesBasicas/situacao";
+import { Pagamento } from "../../classesBasicas/pagamento";
+
 export class BarberValidator {
 
   static MatchPassword(control: AbstractControl) {
@@ -35,6 +38,14 @@ export class BarberValidator {
     return (control: AbstractControl): { [key: string]: any } => {
       return control.value !== undefined && control.value !== null && control.value !== "" && control.value.length > length ? { maxlength: { actualLength: control.value.length, requiredLength: length } } : null;
     };
+  }
+
+  static Situacao(control: AbstractControl): ValidationErrors | null {
+    return !Object.values(Situacao).includes(control.value) ? { situacao: true } : null;
+  }
+
+  static Pagamento(control: AbstractControl): ValidationErrors | null {
+    return !Object.values(Pagamento).includes(control.value) ? { pagamento: true } : null;
   }
 
 }

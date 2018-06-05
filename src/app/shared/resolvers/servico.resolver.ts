@@ -10,7 +10,7 @@ import { Servico } from '../../classesBasicas/servico';
 import { ApiService } from '../api/api.service';
 
 @Injectable()
-export class SolicitarServicoResolver implements Resolve<Object> {
+export class ServicoResolver implements Resolve<Object> {
   constructor(private apiService: ApiService) {}
  
   resolve(
