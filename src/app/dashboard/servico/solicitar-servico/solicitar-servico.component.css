@@ -1,0 +1,17 @@
+form {
+    margin-top: 40px;
+}
+
+#time-picker, #date-picker {
+    margin-left: 20px;
+}
+
+.margin-top-20 {
+    margin-top: 20px;
+}
+
+.fa {
+    cursor: pointer;
+    font-size: 1.37em;
+    height: 1rem;
+}

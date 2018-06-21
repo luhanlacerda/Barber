@@ -1,0 +1,7 @@
+@media (min-width: 992px) {
+    .dropdown-divider {
+        height: auto;
+        margin: 0.5rem 0 0.5rem 0;
+        border-right: 1px solid #e9ecef;
+    }
+}

@@ -1,0 +1,11 @@
+.card-body{
+	background-image: url("../../../../assets/img/styles.jpg");
+	background-size: 100%;
+}
+.card-title {
+	color: #fed136;
+}
+
+.btn{
+	border-radius: 30px;
+}

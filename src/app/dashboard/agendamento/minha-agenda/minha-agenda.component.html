@@ -1,0 +1,38 @@
+<section id="my-login-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card-wrapper mx-auto">
+          <div class="card fat">
+            <div class="card-body">
+              <h4 class="card-title text-center">Visualizar Agendamentos</h4>
+              <table class="table">
+                <caption class="text-right">Total: {{ agendamentos.length }}</caption>
+                <thead class="thead-light">
+                  <tr class="text-center">
+                    <th scope="col">Id</th>
+                    <th scope="col">Horário</th>
+                    <th scope="col">Situação</th>
+                    <th scope="col">Pagamento</th>
+                    <th scope="col">Serviços</th>
+                    <th scope="col">Custo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let agendamento of agendamentos" class="text-center">
+                    <th scope="row">{{ agendamento.id }}</th>
+                    <td>{{ gerarData(agendamento.horario) }}</td>
+                    <td>{{ agendamento.situacao }}</td>
+                    <td>{{ agendamento.pagamento }}</td>
+                    <td>{{ gerarServicos(agendamento.servicos) }}</td>
+                    <td>{{ gerarCusto(agendamento.servicos) | currency:'BRL' }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,68 @@
+<section id="my-login-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card-wrapper mx-auto">
+          <div class="card fat">
+            <div class="card-body">
+              <h4 class="card-title text-center">Registrar</h4>
+              <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                  <label for="name">Nome</label>
+                  <input id="name" type="text" class="form-control" formControlName="nome" autofocus>
+                  <app-campo-erro [msgErro]="mensagensNomeInvalido()" [mostrarErro]="verificaCampoInvalido('nome')">
+                  </app-campo-erro>
+                </div>
+
+                <div class="form-group">
+                  <label for="cpf">CPF</label>
+                  <input id="cpf" type="text" class="form-control" formControlName="cpf">
+                  <app-campo-erro [msgErro]="mensagensCpfInvalido()" [mostrarErro]="verificaCampoInvalido('cpf')">
+                  </app-campo-erro>
+                </div>
+
+                <div class="form-group">
+                  <label for="email">E-Mail</label>
+                  <input id="email" type="email" class="form-control" formControlName="email">
+                  <app-campo-erro [msgErro]="mensagensEmailInvalido()" [mostrarErro]="verificaCampoInvalido('email')">
+                  </app-campo-erro>
+                </div>
+
+                <div class="form-group">
+                  <label for="password">Senha</label>
+                  <show-hide-password icon="fontawesome">
+                    <input id="password" type="password" class="form-control" formControlName="senha">
+                  </show-hide-password>
+                  <app-campo-erro [msgErro]="mensagensSenhaInvalida()" [mostrarErro]="verificaCampoInvalido('senha')">
+                  </app-campo-erro>
+                </div>
+
+                <div class="form-group">
+                  <label for="password-check">Confirmar Senha</label>
+                  <show-hide-password icon="fontawesome">
+                    <input id="password-check" type="password" class="form-control" formControlName="confirmarSenha">
+                  </show-hide-password>
+                  <app-campo-erro [msgErro]="mensagensConfirmarSenhaInvalida()" [mostrarErro]="verificaConfirmarSenha()">
+                  </app-campo-erro>
+                </div>
+
+                <div class="form-group no-margin">
+                  <button type="submit" class="btn btn-primary btn-block">
+                    Registrar
+                  </button>
+                </div>
+                <div class="margin-top20 text-center">
+                  Já possui uma conta?
+                  <a routerLink="/login">Login</a>
+                </div>
+              </form>
+
+              <app-campo-erro [msgErro]="apiError" [mostrarErro]="apiError.length != 0">
+              </app-campo-erro>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

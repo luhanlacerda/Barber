@@ -1,0 +1,58 @@
+<section id="my-login-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <p>
+          Lista de Serviços
+        </p>
+    
+        <div class="list-group">
+          <a class="list-group-item list-group-item-action" [class.active]="servicoActivated == servico" *ngFor="let servico of servicos" (click)="onItemClicked(servico)">
+          {{ servico.nome }}
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <button class="btn btn-primary btn-block" *ngIf="servicoActivated !== undefined && servicoActivated !== null" (click)="onEdit()">
+            {{ isEditing ? "Cancelar Edição" : "Editar" }}
+        </button>
+        <form *ngIf="servicoActivated !== undefined && servicoActivated !== null" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="id">ID</label>
+            <input id="id" type="text" class="form-control" formControlName="id" disabled>
+          </div>
+          
+          <div class="form-group">
+            <label for="nome">Nome</label>
+            <input id="nome" type="text" class="form-control" formControlName="nome" [attr.disabled]="!isEditing ? '' : null">
+            <app-campo-erro [msgErro]="mensagensNomeInvalido()" [mostrarErro]="verificaCampoInvalido('nome')">
+            </app-campo-erro>
+          </div>
+
+          <div class="form-group">
+            <label for="descricao">Descrição</label>
+            <input id="descricao" type="text" class="form-control" formControlName="descricao" [attr.disabled]="!isEditing ? '' : null">
+            <app-campo-erro [msgErro]="mensagensDescricaoInvalido()" [mostrarErro]="verificaCampoInvalido('descricao')">
+            </app-campo-erro>
+          </div>
+
+          <div class="form-group">
+            <label for="valor">Valor</label>
+            <input id="valor" type="number" step="0.01" min="0" max="1500" class="form-control" formControlName="valor" [attr.disabled]="!isEditing ? '' : null">
+            <app-campo-erro [msgErro]="mensagensValorInvalido()" [mostrarErro]="verificaCampoInvalido('valor')">
+            </app-campo-erro>
+          </div>
+
+          <div *ngIf="isEditing" class="form-group no-margin">
+            <button type="submit" class="btn btn-primary btn-block">
+              Atualizar Serviço
+            </button>
+          </div>
+        </form>
+
+        <app-campo-erro [msgErro]="apiError" [mostrarErro]="apiError.length != 0">
+        </app-campo-erro>
+      </div>
+    </div>
+  </div>
+</section>
